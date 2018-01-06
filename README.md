@@ -1,7 +1,7 @@
-# arduino-sf501remote
-An Arduino library to control SF501 RF switches by Flamingo (Smartwares.eu) . Theoratically you can control 65,536 remotes with each 15 sockets.
+# arduino-sf501remote library
+An Arduino library to control SF-501 RF switches by Flamingo (Smartwares.eu) . Theoratically you can control 65,536 remotes with each 15 sockets.
 
-To start using the library include it and create a new Sf501-remote object
+To start using the library include it and create a new Sf501Remote object
 
 ```c++
 #include <sf501-remote.h>
@@ -39,13 +39,13 @@ struct Sf501Packet {
 }
 ```
 	
-**Repeat:** *(Optional)* the number of packages to send each transmit the remotes send them 8 times. *(default: 4)*  
+**Repeat:** *(Optional)* the number of packages to send each transmit the vendor's remotes send them 8 times. *(default: 4)*  
 
 ```c++
 void Sf501Remote::sendRaw(long command, int repeat = 4);
 ```  
 **command:** a 32 bit unsigned long containing all the raw data for a packet, use the receiver method *getRawData()* to figure out the value if you want to copy the functionality of an existing remote.  
-**Repeat:** *(Optional)* the number of packages to send each transmit the remotes send them 8 times. *(default: 4)*  
+**Repeat:** *(Optional)* the number of packages to send each transmit the vendor's remotes send them 8 times. *(default: 4)* 
 
 ```c++
 void Sf501Remote::switchAll(int remoteId, int startChannel, int endChannel, int onOff, int repeat = 4);
@@ -55,7 +55,7 @@ This is a helper function to switch multiple sockets/ buttons at once.
 **remoteId:** a 16 bit unsigned integer 0 - 65535 that will be used as the remote id.
 **channel:** an 4 bit value (1 - 15) discribing the button number (the remotes I have, have only 4 buttons).  
 **onOff:** 0 is off button 1 is on button.  
-**Repeat:** *(Optional)* the number of packages to send each transmit the remotes send them 8 times. *(default: 4)*
+**Repeat:** *(Optional)* the number of packages to send each transmit the vendor's remotes send them 8 times. *(default: 4)* 
 	
 ### How to start receiving packages
 
