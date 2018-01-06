@@ -73,8 +73,17 @@ This is a helper function to switch multiple sockets/ buttons at once.
     remote.nextPacket();
   }
 ```
-3. use the folowing methods to process received packages
+3. Within this if-statement use the folowing methods to process received packages
 
+```c++
+Sf501Packet Sf501Remote::getPacket();
+```
+returns the Sf501Packet struct (see above)
+
+```c++
+unsigned long Sf501Remote::getRawData();
+```
+returns the received package as a 32 bit unsigned long
 
 ### Protocol explained
 
