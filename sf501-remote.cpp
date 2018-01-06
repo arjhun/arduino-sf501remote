@@ -26,7 +26,7 @@ void Sf501Remote::startTransmitter(int pin)
   pinMode(_pin, OUTPUT);
 }
 
-void Sf501Remote::sendRaw(long command, int repeat){
+void Sf501Remote::sendRaw(unsigned long command, int repeat){
 
   while(repeat){
     _pulseStart();
@@ -145,7 +145,7 @@ void Sf501Remote::_pulseLong()
     static int bitCounter = 0;
     static boolean started = false;
     static boolean receiving = true;
-    static long message = 0;
+    static unsigned long message = 0;
     int now = micros();
 
 
