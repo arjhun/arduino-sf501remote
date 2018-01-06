@@ -59,13 +59,13 @@ This is a helper function to switch multiple sockets/ buttons at once.
 	
 ### How to start receiving packages
 
-1. In your setup function add the following
+**1. In your setup function add the following**
   ```c++
   remote.startReceiver(pin);
   ```
   **pin**: a pin number with interrupt capabilities
 
-2. In your loop add the following
+**2. In your loop add the following**
 ```c++
   if (remote.packetAvailable()) {
     
@@ -73,7 +73,7 @@ This is a helper function to switch multiple sockets/ buttons at once.
     remote.nextPacket();
   }
 ```
-3. Within this if-statement use the folowing methods to process received packages
+**3. Within this if-statement use the folowing methods to process received packages**
 
 ```c++
 Sf501Packet Sf501Remote::getPacket();
