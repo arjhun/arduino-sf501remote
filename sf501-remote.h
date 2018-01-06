@@ -61,7 +61,7 @@ This library was inspired by rf-switch: https://github.com/sui77/rc-switch
         void stopReceiver();
         boolean packetAvailable();
         Sf501Packet getPacket();
-        static long getRawData();
+        static unsigned long getRawData();
         void nextPacket();
 
       #endif
@@ -82,7 +82,7 @@ This library was inspired by rf-switch: https://github.com/sui77/rc-switch
       #ifndef NO_RECEIVER
         //receiver vars
         int _rPin;
-        volatile static long _message;
+        volatile static unsigned long _message;
         static Sf501Packet _packet;
         volatile static boolean _messageReady;
         static boolean _checkPulse(long pulseLength, long comp);
