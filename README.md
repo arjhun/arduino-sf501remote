@@ -1,5 +1,5 @@
 # arduino-sf501remote library by Arjen Klaverstijn
-An Arduino library to control SF-501 RF switches by Flamingo (Smartwares.eu) . Theoratically you can control 65,536 remotes with each 15 sockets.
+An Arduino library to control SF-501 RF switches by Flamingo (Smartwares.eu) . Theoratically you can control 65,536 remotes with each 15 sockets/ button pairs (on/ off).
 
 To start using the library include it and create a new Sf501Remote object
 
