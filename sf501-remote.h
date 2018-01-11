@@ -52,7 +52,7 @@ This library was inspired by rf-switch: https://github.com/sui77/rc-switch
       void startTransmitter(int pin);
       void sendCommand(int remoteId, int channel, int onOff, int repeat = 4);
       void sendPacket(Sf501Packet packet, int repeat = 4);
-      void sendRaw(long command, int repeat = 4);
+      void sendRaw(unsigned long command, int repeat = 4);
       void switchAll(int remoteId, int numChannels, int onOff, int repeat = 4);
 
       #ifndef NO_RECEIVER

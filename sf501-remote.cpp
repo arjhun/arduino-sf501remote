@@ -110,7 +110,7 @@ void Sf501Remote::_pulseLong()
     detachInterrupt(digitalPinToInterrupt(_rPin));
   };
 
-  volatile long Sf501Remote::_message = 0;
+  volatile unsigned long Sf501Remote::_message = 0;
   Sf501Packet Sf501Remote::_packet = {0,0,0};
   volatile boolean Sf501Remote::_messageReady = false;
 
@@ -119,7 +119,7 @@ void Sf501Remote::_pulseLong()
     return _messageReady;
   }
 
-  long Sf501Remote::getRawData(){
+  unsigned long Sf501Remote::getRawData(){
     return _message;
   }
 
