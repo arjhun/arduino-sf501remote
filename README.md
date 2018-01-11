@@ -1,4 +1,4 @@
-# arduino-sf501remote library
+# arduino-sf501remote library by Arjen Klaverstijn
 An Arduino library to control SF-501 RF switches by Flamingo (Smartwares.eu) . Theoratically you can control 65,536 remotes with each 15 sockets.
 
 To start using the library include it and create a new Sf501Remote object
@@ -87,7 +87,7 @@ returns the received package as a 32 bit unsigned long
 
 ### Protocol explained
 
-Packet pulses:
+A packet consists of 66 pulses in the following pattern:
 Preamble (1 pulse) - Data (64 pulses) - End (1 pulse)
 
 Data section format:
