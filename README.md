@@ -14,22 +14,22 @@ Sf501Remote remote;
   ```c++
   remote.startTransmitter(pin);
   ```
-  **pin:** The pin number that is connected to the transmit/ data pin of a 433.9 mhz transmitter. I just use an old rf remote.
+  - **pin:** The pin number that is connected to the transmit/ data pin of a 433.9 mhz transmitter. I just use an old rf remote.
   
 #### 2. Use one of the following methods in your loop
       
 ```c++
 void Sf501Remote::sendCommand(int remoteId, int channel, int onOff, int repeat = 4);
 ```
-**remoteId:** a 16 bit unsigned integer 0 - 65535 that will be used as the remote id.
-**channel:** an 4 bit value (1 - 15) discribing the button number (the remotes I have, have only 4 buttons).  
-**onOff:** 0 is off button 1 is on button.  
-**Repeat:** *(Optional)* the number of packages to send each transmit the remotes send them 8 times. *(default: 4)*  
+- **remoteId:** a 16 bit unsigned integer 0 - 65535 that will be used as the remote id.
+- **channel:** an 4 bit value (1 - 15) discribing the button number (the remotes I have, have only 4 buttons).  
+- **onOff:** 0 is off button 1 is on button.  
+- **Repeat:** *(Optional)* the number of packages to send each transmit the remotes send them 8 times. *(default: 4)*  
 
 ```c++
 void Sf501Remote::sendPacket(Sf501Packet packet, int repeat = 4);
 ```
-**packet:** A structure like the following  
+- **packet:** A structure like the following  
 
 ```c++
 struct Sf501Packet {
@@ -39,23 +39,23 @@ struct Sf501Packet {
 }
 ```
 	
-**Repeat:** *(Optional)* the number of packages to send each transmit the vendor's remotes send them 8 times. *(default: 4)*  
+- **Repeat:** *(Optional)* the number of packages to send each transmit the vendor's remotes send them 8 times. *(default: 4)*  
 
 ```c++
 void Sf501Remote::sendRaw(long command, int repeat = 4);
 ```  
-**command:** a 32 bit unsigned long containing all the raw data for a packet, use the receiver method *getRawData()* to figure out the value if you want to copy the functionality of an existing remote.  
-**Repeat:** *(Optional)* the number of packages to send each transmit the vendor's remotes send them 8 times. *(default: 4)* 
+- **command:** a 32 bit unsigned long containing all the raw data for a packet, use the receiver method *getRawData()* to figure out the value if you want to copy the functionality of an existing remote.  
+- **Repeat:** *(Optional)* the number of packages to send each transmit the vendor's remotes send them 8 times. *(default: 4)* 
 
 ```c++
 void Sf501Remote::switchAll(int remoteId, int startChannel, int endChannel, int onOff, int repeat = 4);
 ```
 This is a helper function to switch multiple sockets/ buttons at once.  
 
-**remoteId:** a 16 bit unsigned integer 0 - 65535 that will be used as the remote id.
-**channel:** an 4 bit value (1 - 15) discribing the button number (the remotes I have, have only 4 buttons).  
-**onOff:** 0 is off button 1 is on button.  
-**Repeat:** *(Optional)* the number of packages to send each transmit the vendor's remotes send them 8 times. *(default: 4)* 
+- **remoteId:** a 16 bit unsigned integer 0 - 65535 that will be used as the remote id.
+- **channel:** an 4 bit value (1 - 15) discribing the button number (the remotes I have, have only 4 buttons).  
+- **onOff:** 0 is off button 1 is on button.  
+- **Repeat:** *(Optional)* the number of packages to send each transmit the vendor's remotes send them 8 times. *(default: 4)* 
 	
 ### How to start receiving packages
 
@@ -63,7 +63,7 @@ This is a helper function to switch multiple sockets/ buttons at once.
   ```c++
   remote.startReceiver(pin);
   ```
-  **pin**: a pin number with interrupt capabilities
+  - **pin**: a pin number with interrupt capabilities
 
 **2. In your loop add the following**
 ```c++
