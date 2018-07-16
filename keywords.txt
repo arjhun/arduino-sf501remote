@@ -7,26 +7,26 @@
 #######################################
 
 Sf501Remote	KEYWORD1
-Sf501Packet KEYWORD1
+Sf501Packet	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
-startTransmitter  KEYWORD2
-sendCommand KEYWORD2
-sendPacket KEYWORD2
-sendRaw KEYWORD2
-switchAll KEYWORD2
-startReceiver KEYWORD2
-stopReceiver KEYWORD2
-packetAvailable KEYWORD2
-getPacket KEYWORD2
-getRawData KEYWORD2
-nextPacket KEYWORD2
+startTransmitter	KEYWORD2
+sendCommand	KEYWORD2
+sendPacket	KEYWORD2
+sendRaw	KEYWORD2
+switchAll	KEYWORD2
+startReceiver	KEYWORD2
+stopReceiver	KEYWORD2
+packetAvailable	KEYWORD2
+getPacket	KEYWORD2
+getRawData	KEYWORD2
+nextPacket	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
 #######################################
 
-NO_RECEIVER LITERAL1
+NO_RECEIVER	LITERAL1
