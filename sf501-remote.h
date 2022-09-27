@@ -55,16 +55,12 @@ This library was inspired by rf-switch: https://github.com/sui77/rc-switch
       void sendRaw(unsigned long command, int repeat = 4);
       void switchAll(int remoteId, int numChannels, int onOff, int repeat = 4);
 
-      #ifndef NO_RECEIVER
-
-        void startReceiver(int pin);
-        void stopReceiver();
-        boolean packetAvailable();
-        Sf501Packet getPacket();
-        static unsigned long getRawData();
-        void nextPacket();
-
-      #endif
+      void startReceiver(int pin);
+      void stopReceiver();
+      boolean packetAvailable();
+      Sf501Packet getPacket();
+      static unsigned long getRawData();
+      void nextPacket();
 
     private:
 
@@ -79,15 +75,14 @@ This library was inspired by rf-switch: https://github.com/sui77/rc-switch
       void _pulse(), _pulseStart(), _pulseLong(), _pulseShort();
       int _pin;
 
-      #ifndef NO_RECEIVER
-        //receiver vars
-        int _rPin;
-        volatile static unsigned long _message;
-        static Sf501Packet _packet;
-        volatile static boolean _messageReady;
-        static boolean _checkPulse(long pulseLength, long comp);
-        static void _pulseReceived();
-      #endif
+      //receiver vars
+      int _rPin;
+      volatile static unsigned long _message;
+      static Sf501Packet _packet;
+      volatile static boolean _messageReady;
+      static boolean _checkPulse(long pulseLength, long comp);
+      static void _pulseReceived();
+
     };
 
 #endif
