@@ -87,20 +87,43 @@ unsigned long Sf501Remote::getRawData();
 ```
 returns the received package as a 32 bit unsigned long
 
-### Protocol explained
+### Protocol Explained
 
-A packet consists of 66 pulses in the following pattern:
-Preamble (1 pulse) - Data (64 pulses) - End (1 pulse)
+A packet contains **66 HIGH pulses**: one preamble pulse, two pulses for each of the 32 data bits, and one end pulse.
 
-Data section format:
-32 bits LSB data section
-	
-32 - 18: 16 bit remote id, 65535 different remotes on this system  
-9 - 17: 8 bits are empty on all remotes, no clue where this is for
-5 - 8: 4 bits a decimal value of 1 is switch on a 0 is switch off  
-1 - 4: maximum of 15 buttons/channels per remote
+Data is transmitted **most-significant bit first (MSB first)**, from bit 31 down to bit 0.
 
-Pulses are around 200µS.
+#### Command Format
+
+```text
+command = (remoteId << 16) | (state << 4) | channel
+```
+
+| Bits (zero-based) | Description                          |
+| ----------------- | ------------------------------------ |
+| 31–16             | 16-bit remote ID: 0–65535            |
+| 15–8              | Unused byte, set to zero             |
+| 7–4               | State field: `1` for ON, `0` for OFF |
+| 3–0               | Channel/button ID: 1–15              |
+
+For example, remote ID `25134`, channel `1`, produces `0x622E0011` for ON and `0x622E0001` for OFF.
+
+#### Pulse Timing
+
+Using a **200 µs base duration**, the pulse sequences are:
+
+| Element      | HIGH/LOW sequence                    | Signed durations (µs) |
+| ------------ | ------------------------------------ | --------------------- |
+| Preamble     | HIGH × 1, LOW × 14                   | `200, 2800`           |
+| Data bit `0` | HIGH × 1, LOW × 2, HIGH × 1, LOW × 7 | `200, 400, 200, 1400` |
+| Data bit `1` | HIGH × 1, LOW × 7, HIGH × 1, LOW × 2 | `200, 1400, 200, 400` |
+| End          | HIGH × 1, then return LOW            | `200`                 |
+
+One frame contains **131 duration entries**: two for the preamble, 128 for the data, and one for the end pulse.
+
+Between repeated frames, hold the output LOW for **10800 µs** (54 base units). The default transmission count is **4 frames**, configurable through the `repeat` argument.
+
+#### graph
 
 |¯¯¯|_______________________________________
 preamble = 1 pulse high 14 pulses low
